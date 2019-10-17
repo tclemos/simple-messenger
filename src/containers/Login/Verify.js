@@ -17,18 +17,45 @@ const Verify = () => {
       return;
     }
 
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        console.log('Verify', user);
-        setStatus('Direcionando para mensagens...');
-        window.location.href = `messages/${user.uid}`;
-      }
+    firebase.auth().onAuthStateChanged(user => {
+      console.log('Verify', user);
+      const url = `http://localhost:3333/level?uid=${user.uid}`;
+      fetch(url)
+        .then(res => {
+          if (res.status === 200) {
+            return res.json()
+          } else {
+            return null
+          }
+        })
+        .then(data => {
+          console.log(data)
+          switch (data.level) {
+            case "user":
+              setStatus('Direcionando para mensagens...');
+              window.location.href = `messages/${user.uid}`;
+              break;
+            case "admin":
+              setStatus('Direcionando para contatos...');
+              window.location.href = `contacts/${user.uid}`;
+              break;
+            default:
+              setStatus('invalid user level');
+              break;
+          }
+        })
+        .catch(err => {
+          console.error(err)
+          setStatus('404');
+        })
     });
+
+
   }, []);
 
   return (
     <div className="App">
-      { status }
+      {status}
     </div>
   );
 }

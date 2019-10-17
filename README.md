@@ -30,6 +30,7 @@ REACT_APP_API_KEY=your-web-api-key
 REACT_APP_AUTH_DOMAIN=your-app.firebaseapp.com
 REACT_APP_DATABASE_URL=https://your-app.firebaseio.com
 REACT_APP_PROJECT_ID=your-app
+SERVER_PORT=3333
 ```
 
 To discovery your key, at Firebase console go to `Settings > Project Settings`.
@@ -47,15 +48,28 @@ CAUTION! THIS WILL OPEN YOUR DATABASE! KEEP YOUR KEY SAFE!
 
 Visit https://firebase.google.com/docs/database/security to learn more about security rules.
 
-8. Run the project
+8. Run the back-end server
 
+- Download your credentials at Firebase console `Settings > Service accounts` - or [click here](https://console.firebase.google.com/project/_/settings/serviceaccounts/adminsdk).
+
+- Rename the downloaded file with the name `simple-messenger-oss-firebase-adminsdk.json`
+
+- Put this file under the folder `/server/firebase`
+
+- Run the following command:
+
+```
+npm run serve
+```
+
+9. Run the project
 ```
 npm start
 ```
 
 ## Install Admin Application
 
-1. In the client application (http://localhost:3000) create a usar with your e-mail
+1. In the client application (http://localhost:3000) create a user with your e-mail
 
 2. Go to `admin` and install dependencies
 

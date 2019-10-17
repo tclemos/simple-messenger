@@ -3,6 +3,7 @@ import Messages from './containers/Messages/Messages';
 import MessagesList from './containers/Messages/MessagesList';
 import Login from './containers/Login/Login';
 import Verify from './containers/Login/Verify';
+import Contacts from './containers/Contacts'
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/verify" exact={true} component={Verify}/>
         <Route path="/messages" exact={true} component={MessagesList}/>
         <Route path="/messages/:uid" exact={true} component={Messages}/>
+        <Route path="/contacts/:uid" exact={true} component={Contacts}/>
       </Switch>
     </BrowserRouter>
   );

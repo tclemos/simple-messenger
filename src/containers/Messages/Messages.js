@@ -76,7 +76,7 @@ const Messages = () => {
       setUser(user);
       getMessages(room, setConversation);
     });
-  }, []);
+  }, [room]);
 
   return (
     <div className="App">
